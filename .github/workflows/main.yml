@@ -10,3 +10,14 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: pdb-cheatsheet.tex
+      - name: setup git config
+        run: |
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+      - name: commit
+        run: |
+          # Stage the file, commit and push
+          git add pdb-cheatsheet.pdf
+          git commit -m "Automatic update of pdb-cheatsheet.pdf"
+          git push origin master
